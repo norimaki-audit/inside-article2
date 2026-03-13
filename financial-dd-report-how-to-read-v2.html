@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="財務DD報告書を受領した後、最初に確認すべき6つのポイント（総括・留意事項・運転資本・純資産・ネットデット・正常収益力）を公認会計士が解説。" />
+  <title>財務DD報告書の読み方｜受領後に最初に確認すべき6つのポイント</title>
+
+  <!--
+  =========================================
+  【必ず置換】お問い合わせURL
+  下の __CONTACT_URL__ を、公開後の問い合わせフォームURLに置き換えてください。
+  例）https://example.com/contact
+  =========================================
+  -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Brand */
+      --navy:#2A2954;
+      --navy2:#32315E;
+      --link:#1f3a8a;
+
+      /* Page (readability-first) */
+      --page:#f6f7fb;
+      --paper:#ffffff;
+      --line:#e6e8ef;
+      --line2:#d6dae6;
+
+      --text:#111111;
+      --text2:#1f2937;
+      --muted:#6b7280;
+
+      --good:#16a34a;
+      --warn:#b45309;
+
+      --radius: 18px;
+      --radius2: 22px;
+      --shadow: 0 10px 28px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.06);
+
+      --max: 1120px;
+      --prose: 72ch;
+
+      --p: 16.5px;
+      --lh: 1.78;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: "Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background: var(--page);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    a{ color: var(--link); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    img{ max-width:100%; height:auto; }
+
+    .wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+    @media (max-width: 520px){ .wrap{ width: calc(100% - 28px); } }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 340px;
+      gap: 22px;
+      align-items:start;
+      padding-bottom: 70px;
+    }
+    @media (max-width: 980px){ .grid{ grid-template-columns: 1fr; } }
+
+    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus{
+      position:fixed; left:14px; top:14px; width:auto; height:auto;
+      padding:10px 12px;
+      background: rgba(17,24,39,.92);
+      color:#fff;
+      border-radius: 12px;
+      z-index: 9999;
+    }
+
+    /* HERO (dark allowed, full-bleed) */
+    .hero{
+      color: rgba(255,255,255,.92);
+      background:
+        linear-gradient(180deg, rgba(6,16,24,.90), rgba(6,16,24,.72) 45%, rgba(6,16,24,.92)),
+        url("https://static.wixstatic.com/media/ef45fa_85d537fb06cf432284f104a9cae89da8~mv2.png") center/cover no-repeat;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      padding: clamp(18px, 3vw, 40px) 0 18px;
+
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      border-radius: 0;
+    }
+
+    .topbar{ display:flex; align-items:center; justify-content:space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(6px);
+    }
+    .brand img{ height:22px; width:auto; display:block; }
+    .brand small{ color: rgba(255,255,255,.72); font-weight: 500; }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.88);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    h1{
+      font-family: "Noto Serif JP", serif;
+      line-height: 1.35;
+      letter-spacing: .01em;
+      margin: 8px 0 10px;
+      font-size: clamp(24px, 3.5vw, 40px);
+      text-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+
+    .lede{
+      max-width: 90ch;
+      margin: 10px 0 12px;
+      color: rgba(255,255,255,.86);
+      font-size: clamp(14.5px, 1.55vw, 16px);
+      line-height: 1.85;
+    }
+
+    .meta{ display:flex; flex-wrap:wrap; gap:10px; color: rgba(255,255,255,.72); font-size: 13.5px; align-items:center; }
+    .meta .dot{ width:4px; height:4px; border-radius:999px; background: rgba(255,255,255,.35); display:inline-block; }
+
+    /* Cards */
+    .card{
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .inner{ padding: 20px; }
+    @media (max-width: 520px){ .inner{ padding: 16px; } }
+
+    /* TOC */
+    .toc h2{ margin:0 0 10px; font-size: 13.5px; letter-spacing: .08em; color:#111827; }
+    .toc ol{ margin:0; padding-left:18px; color: var(--text2); }
+    .toc li{ margin: 6px 0; }
+    .toc a{ color:#111827; }
+
+    .tocMobile{ display:none; }
+    @media (max-width: 980px){
+      .tocDesktop{ display:none; }
+      .tocMobile{ display:block; margin-top: 14px; }
+      .toc details{ border-radius:16px; border:1px solid var(--line); background:#fff; padding:12px 14px; box-shadow: var(--shadow2); }
+      .toc summary{ cursor:pointer; list-style:none; font-weight:700; letter-spacing:.02em; color:#111827; }
+      .toc summary::-webkit-details-marker{ display:none; }
+      .toc details[open]{ padding-bottom: 14px; }
+      .toc details ol{ margin-top: 10px; }
+    }
+
+    /* Article */
+    .article{ box-shadow: var(--shadow); }
+    .prose{ max-width: var(--prose); margin: 0 auto; }
+
+    /* Section divider: h2 + line */
+    .article h2{
+      margin: 28px 0 10px;
+      font-size: clamp(19px, 2.1vw, 22px);
+      line-height: 1.45;
+      letter-spacing: .02em;
+      color: #0f172a;
+      display:flex;
+      align-items:center;
+      gap: 14px;
+    }
+    .article h2:first-child{ margin-top: 0; }
+    .article h2::after{
+      content:"";
+      flex:1;
+      height:2px;
+      background: linear-gradient(90deg, rgba(42,41,84,.55), rgba(42,41,84,.10));
+      border-radius: 999px;
+      transform: translateY(1px);
+    }
+    .article h2:not(:first-of-type){ padding-top: 18px; border-top: 1px solid var(--line); }
+
+    .article h3{
+      margin: 18px 0 8px;
+      font-size: clamp(16px, 1.9vw, 18px);
+      line-height: 1.55;
+      color: #111827;
+      position: relative;
+      padding-left: 10px;
+    }
+    .article h3::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.55em;
+      width:4px;
+      height:1.1em;
+      border-radius:999px;
+      background: rgba(42,41,84,.45);
+    }
+
+    .article p{
+      margin: 10px 0;
+      color: var(--text);
+      font-size: var(--p);
+      line-height: var(--lh);
+    }
+    @media (max-width: 520px){ :root{ --p: 16px; } }
+
+    .article ul{
+      margin: 10px 0;
+      padding-left: 20px;
+      color: var(--text);
+      font-size: var(--p);
+      line-height: var(--lh);
+    }
+    .article li{ margin: 6px 0; }
+
+    [id]{ scroll-margin-top: 12px; }
+
+    /* Kicker */
+    .kicker{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #f3f5ff;
+      border: 1px solid #e3e7ff;
+      color: #111827;
+      font-weight: 700;
+      margin: 4px 0 14px;
+    }
+    .svg{ width: 38px; height: 38px; display:block; }
+
+    /* Callouts */
+    .note{
+      margin: 12px 0;
+      padding: 14px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+    .note b{ color:#0f172a; }
+
+    /* Points chips */
+    .chipRow{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0 6px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #0f172a;
+      font-size: 13.5px;
+      box-shadow: 0 6px 16px rgba(17,24,39,.05);
+    }
+    .chip .n{
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 800;
+      font-size: 12px;
+      color:#fff;
+      background: var(--navy);
+    }
+
+    /* Reading order */
+    .order{
+      margin: 12px auto 16px;
+      max-width: var(--prose);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 14px;
+      box-shadow: 0 6px 16px rgba(17,24,39,.05);
+    }
+    .orderGrid{
+      display:grid;
+      grid-template-columns: repeat(6, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    @media (max-width: 980px){ .orderGrid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    @media (max-width: 520px){ .orderGrid{ grid-template-columns: 1fr; } }
+
+    .orderItem{
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 10px;
+      min-height: 74px;
+    }
+    .orderItem b{ display:block; color:#0f172a; font-size: 13.5px; line-height:1.3; }
+    .orderItem span{ display:block; color: var(--muted); font-size: 12.5px; margin-top: 6px; line-height:1.45; }
+
+    /* Compare */
+    .compare{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px auto 18px;
+      max-width: var(--prose);
+    }
+    @media (max-width: 780px){ .compare{ grid-template-columns: 1fr; } }
+    .pane{
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 14px;
+      box-shadow: 0 6px 16px rgba(17,24,39,.05);
+    }
+    .pane h4{ margin:0 0 8px; font-size: 14.5px; letter-spacing:.02em; display:flex; align-items:center; gap: 8px; color:#0f172a; }
+    .badge{ width:10px; height:10px; border-radius:999px; display:inline-block; }
+
+    /* CTA */
+    .ctaBanner{
+      margin: 18px auto 6px;
+      max-width: var(--prose);
+      border-radius: 18px;
+      border: 1px solid #dbe2ff;
+      background: linear-gradient(90deg, #f3f5ff, #ffffff);
+      padding: 16px;
+    }
+    .ctaBanner b{ color:#0f172a; }
+    .ctaBanner p{ margin: 8px 0 12px; color: var(--text2); }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(42,41,84,.18);
+      background: var(--navy);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      min-height: 46px;
+      box-shadow: 0 8px 18px rgba(42,41,84,.18);
+    }
+    .btn:hover{ filter: brightness(1.05); text-decoration:none; }
+    .btn.secondary{
+      border: 1px solid var(--line2);
+      background: #fff;
+      color: #111827;
+      box-shadow: none;
+    }
+
+    /* Sidebar */
+    .side .box{
+      padding: 18px;
+      border-radius: var(--radius2);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow2);
+    }
+    .side .box + .box{ margin-top: 16px; }
+    @media (min-width: 981px){ .side{ position: sticky; top: 18px; align-self: start; } }
+
+    .author{ display:flex; gap: 14px; align-items:flex-start; }
+    .avatar{
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      background: #f3f5ff;
+      border: 1px solid #e3e7ff;
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+    }
+    .author b{ display:block; line-height:1.35; color:#0f172a; }
+    .author small{ display:block; color: var(--muted); margin-top: 6px; line-height:1.7; }
+
+    .cta{ display:grid; gap: 10px; margin-top: 12px; }
+
+    .footer{
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.85;
+      max-width: var(--prose);
+      margin-left:auto; margin-right:auto;
+    }
+
+    .hr{ height:1px; background: var(--line); margin: 18px auto; max-width: var(--prose); }
+
+    @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">本文へスキップ</a>
+
+  <header class="hero" role="banner" aria-label="記事ヘッダー">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand" aria-label="ブランド">
+          <img src="https://static.wixstatic.com/media/ef45fa_ee036c6be23b48ed9bc7dc22a2f90da9~mv2.png" alt="M&A Accounting Finance Tohoku ロゴ" />
+          <small>FinTrust / コラム</small>
+        </div>
+        <div class="pill" title="対象：買い手・金融機関・FA">
+          <span aria-hidden="true">◆</span>
+          <span>財務DD報告書 / 読み方</span>
+        </div>
+      </div>
+
+      <h1>財務DD報告書の読み方｜<br/>受領後に最初に確認すべき6つのポイント</h1>
+
+      <p class="lede">
+        財務DD報告書は「読むための資料」ではなく「判断に使う資料」です。
+        受領直後に、何を・どの順で確認すると意思決定につながるかを、実務目線で一般化して整理します。
+      </p>
+
+      <div class="meta" aria-label="著者情報">
+        <span>著者：成田貴紀（公認会計士・株式会社M&A会計ファイナンス東北 代表パートナー）</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>財務DD 実施件数100件超</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" role="main" style="padding-top:18px;">
+    <div class="wrap grid">
+
+      <!-- MAIN -->
+      <section aria-label="記事本文">
+
+        <div class="card toc tocDesktop" id="top">
+          <div class="inner">
+            <h2>目次（大項目）</h2>
+            <ol>
+              <li><a href="#intro">はじめに</a></li>
+              <li><a href="#use">報告書は「読む」より「判断に使う」</a></li>
+              <li><a href="#six">受領後に最初に確認すべき6つのポイント</a></li>
+              <li><a href="#diff">買い手と金融機関で見方が少し違う</a></li>
+              <li><a href="#mistakes">よくある誤解</a></li>
+              <li><a href="#summary">まとめ</a></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="toc tocMobile">
+          <details>
+            <summary>目次（大項目）を開く</summary>
+            <ol>
+              <li><a href="#intro">はじめに</a></li>
+              <li><a href="#use">報告書は「読む」より「判断に使う」</a></li>
+              <li><a href="#six">受領後に最初に確認すべき6つのポイント</a></li>
+              <li><a href="#diff">買い手と金融機関で見方が少し違う</a></li>
+              <li><a href="#mistakes">よくある誤解</a></li>
+              <li><a href="#summary">まとめ</a></li>
+            </ol>
+          </details>
+        </div>
+
+        <article class="article card" style="margin-top:18px;">
+          <div class="inner">
+
+            <div class="prose">
+              <div class="kicker" id="intro">
+                <svg class="svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                  <path d="M10 46V18c0-2 1.6-3.6 3.6-3.6h36.8C52.4 14.4 54 16 54 18v28" stroke="rgba(42,41,84,.85)" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M18 24h28M18 32h22M18 40h26" stroke="rgba(42,41,84,.45)" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+                <span>はじめに</span>
+              </div>
+
+              <p>
+                M&Aや事業承継の場面で財務DD報告書を受領したとき、
+                「総括は読んだが、結局どこを重視すればよいのか分からない」「買収価格や融資判断に、どう結びつければよいのか分からない」
+                と感じる方は少なくありません。
+              </p>
+              <p>
+                財務DD報告書は、受け取って終わりの資料ではありません。
+                買い手にとっては買収価格の妥当性や契約条件を考える材料であり、金融機関にとっては融資判断や返済可能性を検討する材料です。
+                また、仲介会社やFAにとっても、案件の論点を整理し関係者へ説明するための土台になります。
+              </p>
+              <p>
+                もっとも、財務DD報告書は最初から最後まで均等に読むものではありません。
+                実務では章ごとに役割が異なるため、「まずどこを見て、何を判断するか」を押さえることが重要です。
+              </p>
+
+              <div class="note">
+                <b>補足（実務の肌感）</b><br/>
+                報告書の章立ては作成者によって異なります。典型的にはエグゼクティブ・サマリー（総括）から始まり、
+                正常収益力・修正純資産（純資産調整）に加えて、PL詳細分析・BS詳細分析・税務等が続きます。
+                本記事では、こうした差異を吸収しつつ、HP公開用に一般化して「最初に確認すべき6つのポイント」に落とし込みます。
+              </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="prose">
+              <h2 id="use">財務DD報告書は「読む資料」ではなく「判断に使う資料」</h2>
+              <p>
+                財務DD報告書は、答えが一つに決まっている資料ではありません。
+                同じ報告書でも、買い手・金融機関・仲介会社で重視するポイントは少しずつ異なります。
+              </p>
+              <p>
+                そのため大切なのは、報告書全体を何となく読むことではなく、<b>どの章（論点）が何の判断に効くのか</b>を理解することです。
+              </p>
+
+              <div class="order" aria-label="推奨の確認順（実務）">
+                <b style="display:block; color:#0f172a;">受領後に迷いにくい確認順（例）</b>
+                <p style="margin:8px 0 0; color: var(--text2);">
+                  総括 → その他留意事項 → 運転資本分析 → 純資産調整 → ネットデット調整 → 正常収益力
+                </p>
+                <div class="orderGrid" style="margin-top:10px;">
+                  <div class="orderItem"><b>総括</b><span>論点の地図</span></div>
+                  <div class="orderItem"><b>留意事項</b><span>条件・説明の核</span></div>
+                  <div class="orderItem"><b>運転資本</b><span>資金ショート防止</span></div>
+                  <div class="orderItem"><b>純資産</b><span>実態BS・下振れ</span></div>
+                  <div class="orderItem"><b>ネットデット</b><span>実質負担の整理</span></div>
+                  <div class="orderItem"><b>正常収益力</b><span>利益の再現性</span></div>
+                </div>
+              </div>
+
+              <p>
+                案件によって多少前後はありますが、中堅・中小企業の事業承継案件では、この順番で確認すると全体像をつかみやすくなります。
+              </p>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="prose">
+              <h2 id="six">受領後に最初に確認すべき6つのポイント</h2>
+              <p>
+                ここからは、各ポイントについて「まず何を確認するか」「どう意思決定につなげるか」を実務目線で整理します。
+              </p>
+
+              <div class="chipRow" aria-label="6つのポイント">
+                <span class="chip"><span class="n">1</span>総括</span>
+                <span class="chip"><span class="n">2</span>その他留意事項</span>
+                <span class="chip"><span class="n">3</span>運転資本分析</span>
+                <span class="chip"><span class="n">4</span>純資産調整</span>
+                <span class="chip"><span class="n">5</span>ネットデット調整</span>
+                <span class="chip"><span class="n">6</span>正常収益力</span>
+              </div>
+
+              <h3 id="p1">1. 総括｜最初に見るべきだが、ここだけで判断しない</h3>
+              <p>
+                総括は、報告書全体の要点を短くまとめた部分です。
+                最初に目を通す場所としては正しいのですが、ここだけで「大きな問題はなさそう」と判断するのは危険です。
+              </p>
+              <p>
+                総括で見るべきなのは、<b>この案件の論点がどこにあるか</b>という地図です。
+              </p>
+              <div class="note">
+                <b>総括で確認したいポイント</b>
+                <ul>
+                  <li>収益力、純資産、資金繰りのどこに主要論点があるか</li>
+                  <li>取引条件に影響しそうな項目が挙がっているか</li>
+                  <li>追加確認が必要な事項が示されているか</li>
+                  <li>「中断を示唆する重要事項はない」でも条件交渉が必要な論点が残っていないか</li>
+                </ul>
+              </div>
+              <p>
+                実務では、総括は安心材料ではなく、後ろの章で深掘りすべき論点の一覧として読みます。
+              </p>
+
+              <h3 id="p2">2. その他留意事項｜実務ではここが最重要になることも多い</h3>
+              <p>
+                中堅・中小企業の案件で、実務上もっとも重要になりやすいのが「その他留意事項」です。
+                表にきれいに落ちない論点でも、買収の進め方・価格交渉・契約条件・金融機関への説明に大きく影響する事項は、この章に集まりやすいからです。
+              </p>
+              <div class="note">
+                <b>その他留意事項で出やすい論点</b>
+                <ul>
+                  <li>借入契約や財務制限条項（コベナンツ）に関する注意点</li>
+                  <li>株主交代や代表者変更時に承諾が必要な契約</li>
+                  <li>関連当事者取引</li>
+                  <li>税務上の整理が必要な事項</li>
+                  <li>未払残業代や労務管理上の問題</li>
+                  <li>在庫評価や原価計算の不備</li>
+                  <li>特定取引先との契約関係</li>
+                  <li>名義と実態がずれている残高や取引</li>
+                </ul>
+              </div>
+              <p>
+                ここでは「論点があるかどうか」だけでなく、<b>その論点を誰がどう処理するのか</b>を考えることが重要です。
+                実務では、売り手に事前是正、価格反映、契約で責任範囲明確化、買収後運営で対応可否、金融機関への事前説明などの対応につながります。
+              </p>
+              <p><b>その他留意事項は補足ではありません。</b>この案件をどんな条件で進めるべきかを考える章です。</p>
+
+              <h3 id="p3">3. 運転資本分析｜利益より先に資金繰りを見るべきことがある</h3>
+              <p>
+                利益が出ている会社でも、買収後に資金繰りが苦しくなることはあります。
+                その原因になりやすいのが、売掛金・在庫・買掛金のバランス（運転資本）です。
+              </p>
+              <div class="note">
+                <b>運転資本分析で確認したいポイント</b>
+                <ul>
+                  <li>売掛金の回収サイトは長くなっていないか</li>
+                  <li>在庫が過大になっていないか</li>
+                  <li>買掛金の支払いとのバランスはどうか</li>
+                  <li>繁忙期と閑散期で必要資金が大きく変わらないか</li>
+                  <li>決算日だけ数字がよく見えていないか</li>
+                  <li>買収後に追加の運転資金が必要にならないか</li>
+                </ul>
+              </div>
+              <p>
+                この章は利益の良し悪しを見るためではなく、<b>買収後にお金が足りなくならないか</b>を見るための章です。
+                買い手は資金準備、金融機関は融資後の返済・資金繰りの無理の有無を確認します。
+                中堅・中小企業の案件では、正常収益力より先に運転資本を見るべきこともあります。
+              </p>
+
+              <h3 id="p4">4. 純資産調整｜決算書の純資産ではなく「実態」を見る</h3>
+              <p>
+                純資産調整は、決算書に載っている純資産をそのまま使うのではなく、資産・負債の実態を踏まえて修正した場合に純資産がどう変わるかを確認する章です。
+                中堅・中小企業では、帳簿上は資産でも実質的に価値が薄いものが混ざっていることがあり、逆に帳簿に十分反映されない負債が後から見つかることもあります。
+              </p>
+              <div class="note">
+                <b>純資産調整で出やすい項目</b>
+                <ul>
+                  <li>滞留売掛金や回収懸念債権</li>
+                  <li>不良在庫や滞留在庫</li>
+                  <li>未計上の引当金</li>
+                  <li>退職給付・退職慰労金に関する負担</li>
+                  <li>未払税金</li>
+                  <li>時価との差が大きい不動産・有価証券</li>
+                  <li>関連当事者との不明瞭な残高</li>
+                  <li>実質的に資産性の乏しい仮払金など</li>
+                </ul>
+              </div>
+              <p>
+                ここでは修正後純資産の金額だけでなく、<b>どの項目が大きく効いているか</b>を見ます。
+                買い手にとっては価格交渉の根拠になり、金融機関にとっては財務の安全性を判断する材料になります。
+              </p>
+
+              <h3 id="p5">5. ネットデット調整｜買収時に実質的に引き受ける負担を見る</h3>
+              <p>
+                ネットデット調整は、対象会社が実質的にどれだけの負担を抱えているかを見るための章です。
+                見た目の借入金残高だけではなく、現預金や準負債も含めて、実態としてどれだけ重い会社なのかを確認します。
+              </p>
+              <div class="note">
+                <b>ネットデット調整で見たい項目</b>
+                <ul>
+                  <li>借入金</li>
+                  <li>リース債務</li>
+                  <li>未払賞与・未払税金</li>
+                  <li>退職関連の負担</li>
+                  <li>役員借入金などの準負債</li>
+                  <li>現預金</li>
+                  <li>最低限必要な運転資金（最低必要現預金）</li>
+                </ul>
+              </div>
+              <p>
+                ネットデット調整表は見やすい反面、前提を見ずに金額だけ使うと危険です。
+                特に「現預金をどこまで自由に使える前提にしているか」は要注意です。
+                見かけ上は現預金があっても、実際には仕入資金や季節資金として必要な場合があります。
+              </p>
+              <p>
+                そのためネットデットは単なる表計算ではなく、<b>その事業に本当に必要な資金を踏まえているか</b>を確認することが大切です。
+              </p>
+
+              <h3 id="p6">6. 正常収益力｜「今の利益が今後も続くか」を見る</h3>
+              <p>
+                正常収益力は、過去の損益をそのまま見るのではなく、一時的な要因を除いたうえで、今後どの程度の利益が期待できるかを確認するための章です。
+                中堅・中小企業ではオーナー企業特有の費用や一時的な損益が混ざることがあり、決算書の利益だけでは実態が見えないことがあります。
+              </p>
+              <div class="note">
+                <b>正常収益力で確認したいポイント</b>
+                <ul>
+                  <li>一過性の売上や利益が含まれていないか</li>
+                  <li>一時的な費用をどう扱っているか</li>
+                  <li>オーナー関連費用・役員報酬をどう調整しているか</li>
+                  <li>本来必要な人件費・管理費が抜けていないか</li>
+                  <li>特定の得意先や案件に利益が偏っていないか</li>
+                </ul>
+              </div>
+              <p>
+                ここでは調整後の利益額そのものより、<b>なぜその調整をしているのか</b>を確認することが重要です。
+                正常収益力だけ良くても、純資産や資金繰りに問題があれば安心はできません。
+              </p>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="prose">
+              <h2 id="diff">買い手と金融機関で、同じ報告書でも見方は少し違う</h2>
+              <p>
+                財務DD報告書は同じ資料でも、買い手と金融機関では見方が少し異なります。
+                買い手は価格の妥当性、金融機関は返済可能性という視点で読むため、注目点が変わります。
+              </p>
+            </div>
+
+            <div class="compare" aria-label="買い手と金融機関の視点（比較）">
+              <div class="pane">
+                <h4><span class="badge" style="background: var(--good);"></span>買い手が重視するポイント</h4>
+                <ul style="margin:8px 0 0; padding-left:20px; color: var(--text); line-height:1.78;">
+                  <li>買収価格は妥当か</li>
+                  <li>後から大きな支出が出ないか</li>
+                  <li>想定した利益が維持できそうか</li>
+                  <li>契約書で手当てすべき論点は何か</li>
+                  <li>買収後に運営上の問題が出ないか</li>
+                </ul>
+              </div>
+              <div class="pane">
+                <h4><span class="badge" style="background: var(--warn);"></span>金融機関が重視するポイント</h4>
+                <ul style="margin:8px 0 0; padding-left:20px; color: var(--text); line-height:1.78;">
+                  <li>利益と資金繰りの両面で返済可能か</li>
+                  <li>季節資金・運転資金の負担に耐えられるか</li>
+                  <li>契約上・税務上・労務上の問題で資金流出が起きないか</li>
+                  <li>想定外の負担で財務内容が悪化しないか</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="prose">
+              <h2 id="mistakes">財務DD報告書の読み方でよくある誤解</h2>
+
+              <h3>総括だけ読んで安心してしまう</h3>
+              <p>総括は入口にすぎません。重要な論点は、その他留意事項や個別分析の中にあります。</p>
+
+              <h3>利益が出ていれば大丈夫だと考えてしまう</h3>
+              <p>正常収益力が良く見えても、滞留債権や過大在庫、未計上負債があれば、買収後に苦しくなることがあります。</p>
+
+              <h3>ネットデットの金額をそのまま使ってしまう</h3>
+              <p>最低限必要な現預金や季節資金を見落とすと、実態より軽く見えてしまいます。</p>
+
+              <h3>その他留意事項を補足だと思ってしまう</h3>
+              <p>実務では、ここに書かれた事項が価格交渉や契約条件の中心論点になることが少なくありません。</p>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="prose">
+              <h2 id="summary">まとめ｜財務DD報告書は「どの章が何に効くか」を理解して読む</h2>
+              <p>
+                財務DD報告書は、数字を確認するだけの資料ではありません。
+                買うか、いくらで買うか、どんな条件で進めるかを判断するための資料です。
+              </p>
+              <p>
+                受領した後、まず確認すべきポイントは次の6つです。
+              </p>
+              <ul>
+                <li>総括</li>
+                <li>その他留意事項</li>
+                <li>運転資本分析</li>
+                <li>純資産調整</li>
+                <li>ネットデット調整</li>
+                <li>正常収益力</li>
+              </ul>
+
+              <div class="note">
+                <b>6ポイントが「何に効くか」</b>
+                <ul style="margin:10px 0 0;">
+                  <li>総括：全体像をつかむため</li>
+                  <li>その他留意事項：条件交渉や説明対応のため</li>
+                  <li>運転資本分析：買収後の資金繰りを考えるため</li>
+                  <li>純資産調整：実態純資産を把握するため</li>
+                  <li>ネットデット調整：実質的な負担を見るため</li>
+                  <li>正常収益力：利益の再現性を見るため</li>
+                </ul>
+              </div>
+
+              <div class="ctaBanner" aria-label="財務DD報告書の内容についてご質問がある方へ">
+                <b>財務DD報告書の内容についてご質問がある方へ</b>
+                <p>
+                  当社では、財務DD報告書を提出して終わりではなく、買い手企業や金融機関がその内容を理解し、価格検討・融資判断・契約条件の整理につなげられるよう、
+                  必要に応じて論点説明や補足対応を行っています。
+                </p>
+                <ul style="margin:10px 0 12px; padding-left:20px; color: var(--text); line-height:1.78;">
+                  <li>この調整項目は買収価格にどう影響するのか</li>
+                  <li>どの留意事項を契約条件に反映すべきか</li>
+                  <li>金融機関として特に確認すべき点はどこか</li>
+                  <li>買収後の資金繰りに影響する論点は何か</li>
+                </ul>
+                <a class="btn" href="__CONTACT_URL__">お問い合わせはこちら →</a>
+              </div>
+
+              <div class="footer" aria-label="免責・注記">
+                <p style="margin:0;">
+                  ※本記事は一般的な情報提供を目的としたもので、個別案件の結論を示すものではありません。実際の対応は案件の状況に応じて専門家へご相談ください。
+                </p>
+                <p style="margin:8px 0 0;"><a href="#top">▲ ページ上部へ戻る</a></p>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      </section>
+
+      <!-- SIDEBAR (主CTA1 + 補助CTA1) -->
+      <aside class="side" aria-label="サイドバー">
+        <div class="box">
+          <h3 style="margin:0 0 12px; color:#0f172a;">著者</h3>
+          <div class="author">
+            <div class="avatar" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 64 64" fill="none">
+                <path d="M32 10v44" stroke="rgba(15,23,42,.78)" stroke-width="3" stroke-linecap="round"/>
+                <path d="M18 18h28" stroke="rgba(42,41,84,.95)" stroke-width="3" stroke-linecap="round"/>
+                <path d="M14 18l-8 16h16l-8-16Z" stroke="rgba(15,23,42,.40)" stroke-width="2" fill="rgba(42,41,84,.05)"/>
+                <path d="M50 18l-8 16h16l-8-16Z" stroke="rgba(15,23,42,.40)" stroke-width="2" fill="rgba(42,41,84,.05)"/>
+                <path d="M22 54h20" stroke="rgba(15,23,42,.40)" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <b>成田 貴紀</b>
+              <small>
+                公認会計士／株式会社M&A会計ファイナンス東北 代表パートナー<br/>
+                財務DD 実施件数100件超
+              </small>
+            </div>
+          </div>
+
+          <div class="cta">
+            <a class="btn" href="__CONTACT_URL__" aria-label="お問い合わせ（URL未確定のためプレースホルダー）">お問い合わせはこちら →</a>
+            <a class="btn secondary" href="#use">確認順（6ポイント）を見る</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3 style="margin:0 0 10px;">
+            <a href="https://duqddu-my-site-y7spf6js-naritainside.wix-vibe-site.com/" target="_blank" rel="noopener" style="color:#0f172a;">株式会社M&A会計ファイナンス東北</a>
+          </h3>
+          <p style="margin:0; color: var(--text2); line-height:1.85;">
+            代表パートナー・公認会計士　成田貴紀<br/>
+            〒140-0002 宮城県仙台市青葉区中央2-11-19 仙南ビル4階-A
+          </p>
+          <p style="margin:10px 0 0; color: var(--muted); font-size: 12.8px;">
+            ※住所表記はご提示の原稿に基づき掲載しています。
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const offset = 8;
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', (e)=>{
+          const id = a.getAttribute('href');
+          if(!id || id === '#') return;
+          const el = document.querySelector(id);
+          if(!el) return;
+          e.preventDefault();
+          const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior:'smooth' });
+          history.pushState(null, '', id);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
